@@ -1,0 +1,5 @@
+{
+  "connectionClass": [
+    "Fusio\\Adapter\\Thrift\\Connection\\Thrift"
+  ]
+}
