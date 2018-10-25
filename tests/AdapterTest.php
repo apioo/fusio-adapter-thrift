@@ -21,7 +21,7 @@
 
 namespace Fusio\Adapter\Thrift\Tests;
 
-use Fusio\Adapter\Soap\Adapter;
+use Fusio\Adapter\Thrift\Adapter;
 use Fusio\Engine\Test\AdapterTestCase;
 
 /**
