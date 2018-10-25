@@ -56,7 +56,7 @@ class ThriftTest extends \PHPUnit_Framework_TestCase
             'definition' => $this->getDefinition(),
         ]);
 
-        $connection->onUp($config);
+        $connection->onUp('action', $config);
 
         $client = $connection->getConnection($config);
 
