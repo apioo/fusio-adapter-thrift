@@ -29,6 +29,7 @@ use Fusio\Engine\Form\Element\Select;
 use Fusio\Engine\Form\Element\TextArea;
 use Fusio\Engine\Parameters;
 use Fusio\Engine\Test\EngineTestCaseTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * ThriftTest
@@ -37,7 +38,7 @@ use Fusio\Engine\Test\EngineTestCaseTrait;
  * @license http://www.gnu.org/licenses/agpl-3.0
  * @link    http://fusio-project.org
  */
-class ThriftTest extends \PHPUnit_Framework_TestCase
+class ThriftTest extends TestCase
 {
     use EngineTestCaseTrait;
 
