@@ -3,7 +3,7 @@
  * Fusio
  * A web-application to create dynamically RESTful APIs
  *
- * Copyright (C) 2015-2017 Christoph Kappestein <christoph.kappestein@gmail.com>
+ * Copyright (C) 2015-2022 Christoph Kappestein <christoph.kappestein@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -37,24 +37,20 @@ use Thrift\Transport\TSocket;
  *
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.gnu.org/licenses/agpl-3.0
- * @link    http://fusio-project.org
+ * @link    https://www.fusio-project.org/
  */
 class Thrift implements ConnectionInterface, DeploymentInterface
 {
-    const TYPE_HTTP = 'http';
-    const TYPE_HTTPS = 'https';
-    const TYPE_SOCKET = 'socket';
+    public const TYPE_HTTP = 'http';
+    public const TYPE_HTTPS = 'https';
+    public const TYPE_SOCKET = 'socket';
 
-    public function getName()
+    public function getName(): string
     {
         return 'Thrift';
     }
 
-    /**
-     * @param \Fusio\Engine\ParametersInterface $config
-     * @return mixed
-     */
-    public function getConnection(ParametersInterface $config)
+    public function getConnection(ParametersInterface $config): mixed
     {
         $name = $config->get('name');
         $ns   = $config->get('namespace');
@@ -88,7 +84,7 @@ class Thrift implements ConnectionInterface, DeploymentInterface
         return new $class($protocol);
     }
 
-    public function configure(BuilderInterface $builder, ElementFactoryInterface $elementFactory)
+    public function configure(BuilderInterface $builder, ElementFactoryInterface $elementFactory): void
     {
         $types = [
             'http' => 'HTTP',
@@ -105,7 +101,7 @@ class Thrift implements ConnectionInterface, DeploymentInterface
         $builder->add($elementFactory->newTextArea('definition', 'Definition', 'text', 'The Thrift service definition'));
     }
 
-    public function onUp($name, ParametersInterface $config)
+    public function onUp(string $name, ParametersInterface $config): void
     {
         $cacheDir = $this->getCacheDir();
 
@@ -130,12 +126,12 @@ class Thrift implements ConnectionInterface, DeploymentInterface
         }
     }
 
-    public function onDown($name, ParametersInterface $config)
+    public function onDown(string $name, ParametersInterface $config): void
     {
         // @TODO maybe remove the dir
     }
 
-    private function getCacheDir()
+    private function getCacheDir(): string
     {
         if (defined('PSX_PATH_CACHE')) {
             return PSX_PATH_CACHE;
