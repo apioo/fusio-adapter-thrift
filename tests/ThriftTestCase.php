@@ -21,20 +21,27 @@
 
 namespace Fusio\Adapter\Thrift\Tests;
 
-use Fusio\Adapter\Thrift\Adapter;
-use Fusio\Engine\Test\AdapterTestCase;
+use Fusio\Adapter\Stripe\Connection\Stripe;
+use Fusio\Adapter\Stripe\Payment\Stripe as StripePayment;
+use Fusio\Adapter\Thrift\Connection\Thrift;
+use Fusio\Engine\Action\Runtime;
+use Fusio\Engine\Test\EngineTestCaseTrait;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
- * AdapterTest
+ * ThriftTestCase
  *
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.gnu.org/licenses/agpl-3.0
  * @link    https://www.fusio-project.org/
  */
-class AdapterTest extends AdapterTestCase
+class ThriftTestCase extends TestCase
 {
-    protected function getAdapterClass(): string
+    use EngineTestCaseTrait;
+
+    protected function configure(Runtime $runtime, Container $container): void
     {
-        return Adapter::class;
+        $container->set(Thrift::class, new Thrift());
     }
 }
