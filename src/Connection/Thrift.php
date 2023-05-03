@@ -83,6 +83,7 @@ class Thrift implements ConnectionInterface, DeploymentInterface
         $protocol  = new TBinaryProtocol($transport);
         $transport->open();
 
+        /** @psalm-suppress InvalidStringClass */
         return new $class($protocol);
     }
 
