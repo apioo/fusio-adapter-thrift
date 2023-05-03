@@ -68,7 +68,9 @@ class Thrift implements ConnectionInterface, DeploymentInterface
             $class = $ns . '\\' . $class;
         }
 
+        /** @psalm-suppress UnresolvableInclude */
         require_once $baseDir . '/Types.php';
+        /** @psalm-suppress UnresolvableInclude */
         require_once $baseDir . '/' . $name . '.php';
 
         if ($type == self::TYPE_SOCKET) {
@@ -119,6 +121,7 @@ class Thrift implements ConnectionInterface, DeploymentInterface
             mkdir($base);
         }
 
+        /** @psalm-suppress ForbiddenCode */
         shell_exec('thrift -r -o ' . escapeshellarg($base) . ' --gen php ' . escapeshellarg($file));
 
         if (!is_dir($base . '/gen-php')) {
