@@ -22,7 +22,7 @@
 namespace Fusio\Adapter\Thrift\Connection;
 
 use Fusio\Engine\Connection\DeploymentInterface;
-use Fusio\Engine\ConnectionInterface;
+use Fusio\Engine\ConnectionAbstract;
 use Fusio\Engine\Exception\ConfigurationException;
 use Fusio\Engine\Form\BuilderInterface;
 use Fusio\Engine\Form\ElementFactoryInterface;
@@ -39,7 +39,7 @@ use Thrift\Transport\TSocket;
  * @license http://www.gnu.org/licenses/agpl-3.0
  * @link    https://www.fusio-project.org/
  */
-class Thrift implements ConnectionInterface, DeploymentInterface
+class Thrift extends ConnectionAbstract implements DeploymentInterface
 {
     public const TYPE_HTTP = 'http';
     public const TYPE_HTTPS = 'https';
