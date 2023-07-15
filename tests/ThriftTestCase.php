@@ -21,13 +21,9 @@
 
 namespace Fusio\Adapter\Thrift\Tests;
 
-use Fusio\Adapter\Stripe\Connection\Stripe;
-use Fusio\Adapter\Stripe\Payment\Stripe as StripePayment;
-use Fusio\Adapter\Thrift\Connection\Thrift;
-use Fusio\Engine\Action\Runtime;
+use Fusio\Adapter\Thrift\Adapter;
 use Fusio\Engine\Test\EngineTestCaseTrait;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\Container;
 
 /**
  * ThriftTestCase
@@ -40,8 +36,8 @@ class ThriftTestCase extends TestCase
 {
     use EngineTestCaseTrait;
 
-    protected function configure(Runtime $runtime, Container $container): void
+    protected function getAdapterClass(): string
     {
-        $container->set(Thrift::class, new Thrift());
+        return Adapter::class;
     }
 }
